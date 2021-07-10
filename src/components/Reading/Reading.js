@@ -24,7 +24,7 @@ const Reading = () => {
                         <NavLink to="/reading-books" activeClassName="discover">
                             <li className="list-group-item">
                                 Reading List
-                                <span className="badge bg-success ms-1">{books.length || 0}</span>
+                                <span className="badge bg-success ms-1">{books.length}</span>
                             </li>
                         </NavLink>
                         <NavLink to="/finished-books" activeClassName="discover">
@@ -41,7 +41,7 @@ const Reading = () => {
 
                         books?.map((book) => <Book book={book} key={book.id}></Book>) 
                         :
-                        <p>
+                        <p className="p-4">
                             Looks like you've finished all your books! Check them out in your finished books.
                         </p>
 

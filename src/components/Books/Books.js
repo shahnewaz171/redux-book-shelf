@@ -24,7 +24,7 @@ const Books = () => {
                         <NavLink to="/reading-books" activeClassName="discover">
                             <li className="list-group-item">
                                 Reading List
-                                <span className="badge bg-success ms-1"></span>
+                                <span className="badge bg-success ms-1">0</span>
                             </li>
                         </NavLink>
                         <NavLink to="/finished-books" activeClassName="discover">
