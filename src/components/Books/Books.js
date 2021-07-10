@@ -1,8 +1,15 @@
 import React from 'react';
+import { useSelector } from 'react-redux';
 import { Link} from "react-router-dom";
+import Book from '../Book/Book'
 import './Books.css';
 
 const Books = () => {
+    const books = useSelector((state) => {
+        return state.books.discoverList;
+    });
+    console.log(books);
+
     return (
         <div className="container">
            <div className="row">
@@ -26,21 +33,10 @@ const Books = () => {
                         </li>
                     </ul>
                 </div>
-
                 <div className="col-md-9">
-                     <div className="card mb-3">
-                        <div className="row g-0">
-                            <div className="col-md-4">
-                                <img src="..." alt="..." />
-                            </div>
-                            <div className="col-md-8">
-                                <div className="card-body">
-                                    <h5 className="card-title">Card title</h5>
-                                    <p className="card-text">This is a wider card with supporting text below as a natural lead-in to additional content. This content is a little bit longer.</p>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
+                    {
+                        books.map(book => <Book book={book} key={book.id}></Book> )
+                    }
                 </div>
            </div>
         </div>
