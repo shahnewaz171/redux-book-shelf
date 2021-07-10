@@ -2,7 +2,7 @@ import React from 'react';
 
 const Book = (props) => {
     const {title, author, coverImageUrl, synopsis} = props.book;
-    
+
     return (
         <div className="card mb-3">
             <div className="row g-0">
@@ -16,6 +16,11 @@ const Book = (props) => {
                         <p className="card-text">{synopsis}</p>
                     </div>
                 </div>
+               <div>
+                <span className="add-discover position-absolute top-50 start-100 translate-middle px-2 bg-primary border border-light rounded-circle">
+                    <span>+</span>
+                </span>
+               </div>
             </div>
         </div>
     );

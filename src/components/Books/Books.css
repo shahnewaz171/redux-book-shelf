@@ -5,3 +5,23 @@
     text-decoration: none;
     color: rgb(71, 70, 70);
 }
+.add-discover{
+    padding-top: 1px;
+    padding-bottom: 1px;
+    cursor: pointer;
+    transition: .2s ease;
+}
+.add-discover span{
+    padding-top: 1px;
+    padding-bottom: 1px;
+    font-size: 18px;
+    color: wheat;
+    font-weight: bold;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-top: -2px;
+}
+.add-discover:hover{
+   background-color: #1658bb !important;
+}
