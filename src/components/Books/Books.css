@@ -1,3 +1,7 @@
 .books .discover{
     border-left: 4px solid green;
 }
+.books ul li a{
+    text-decoration: none;
+    color: rgb(71, 70, 70);
+}
