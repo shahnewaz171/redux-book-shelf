@@ -1,19 +1,19 @@
 import React from 'react';
 import { useSelector } from 'react-redux';
-import { NavLink } from "react-router-dom";
-import Book from '../Book/Book'
-import './Books.css';
+import Book from '../Book/Book';
+import { NavLink} from "react-router-dom";
+import '../Books/Books.css';
 
-const Books = () => {
+const Reading = () => {
     const books = useSelector((state) => {
-        return state.books.discoverList;
+        return state.books.readingList;
     });
     console.log(books);
 
     return (
         <div className="container">
-           <div className="row">
-                <div className="col-md-3 books">
+            <div className="row g-0">
+                 <div className="col-md-3 books">
                     <ul className="list-group">
                         <NavLink to="/" exact activeClassName="discover">
                             <li className="list-group-item">
@@ -24,7 +24,7 @@ const Books = () => {
                         <NavLink to="/reading-books" activeClassName="discover">
                             <li className="list-group-item">
                                 Reading List
-                                <span className="badge bg-success ms-1"></span>
+                                <span className="badge bg-success ms-1">{books.length || 0}</span>
                             </li>
                         </NavLink>
                         <NavLink to="/finished-books" activeClassName="discover">
@@ -37,12 +37,19 @@ const Books = () => {
                 </div>
                 <div className="col-md-9">
                     {
-                        books.map(book => <Book book={book} key={book.id}></Book> )
-                    }
+                        books?.length ?
+
+                        books?.map((book) => <Book book={book} key={book.id}></Book>) 
+                        :
+                        <p>
+                            Looks like you've finished all your books! Check them out in your finished books.
+                        </p>
+
+                     }
                 </div>
-           </div>
+            </div>
         </div>
     );
 };
 
-export default Books;
+export default Reading;

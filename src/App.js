@@ -3,15 +3,20 @@ import './App.css';
 import { BrowserRouter as Router, Switch, Route} from "react-router-dom";
 import Navbar from './components/Navbar/Navbar';
 import Books from './components/Books/Books';
+import Reading from './components/Reading/Reading';
 
 function App() {
   return (
     <>
       <Router>
         <Switch>
-          <Route to="/">
+          <Route exact path="/">
             <Navbar />
             <Books />
+          </Route>
+          <Route path="/reading-books">
+            <Navbar />
+            <Reading />
           </Route>
         </Switch>
       </Router>
