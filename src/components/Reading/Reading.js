@@ -5,10 +5,9 @@ import { NavLink} from "react-router-dom";
 import '../Books/Books.css';
 
 const Reading = () => {
-    const books = useSelector((state) => {
-        return state.books.readingList;
+    const { readingList, finishedList } = useSelector((state) => {
+        return state.books;
     });
-    console.log(books);
 
     return (
         <div className="container">
@@ -24,22 +23,20 @@ const Reading = () => {
                         <NavLink to="/reading-books" activeClassName="discover">
                             <li className="list-group-item">
                                 Reading List
-                                <span className="badge bg-success ms-1">{books.length}</span>
+                                <span className="badge bg-success ms-1">{readingList.length}</span>
                             </li>
                         </NavLink>
                         <NavLink to="/finished-books" activeClassName="discover">
                             <li className="list-group-item">
                                 Finished Books
-                                <span className="badge bg-success ms-1">0</span>
+                                <span className="badge bg-success ms-1">{finishedList.length}</span>
                             </li>
                         </NavLink>
                     </ul>
                 </div>
                 <div className="col-md-9">
                     {
-                        books?.length ?
-
-                        books?.map((book) => <Book book={book} key={book.id}></Book>) 
+                         readingList?.length ?  readingList.map((book) => <Book book={book} key={book.id}></Book>) 
                         :
                         <p className="p-4">
                             Looks like you've finished all your books! Check them out in your finished books.

@@ -5,10 +5,9 @@ import Book from '../Book/Book'
 import './Books.css';
 
 const Books = () => {
-    const books = useSelector((state) => {
-        return state.books.discoverList;
+    const { discoverList, readingList, finishedList } = useSelector((state) => {
+        return state.books;
     });
-    console.log(books);
 
     return (
         <div className="container">
@@ -24,20 +23,20 @@ const Books = () => {
                         <NavLink to="/reading-books" activeClassName="discover">
                             <li className="list-group-item">
                                 Reading List
-                                <span className="badge bg-success ms-1">0</span>
+                                <span className="badge bg-success ms-1">{readingList.length}</span>
                             </li>
                         </NavLink>
                         <NavLink to="/finished-books" activeClassName="discover">
                             <li className="list-group-item">
                                 Finished Books
-                                <span className="badge bg-success ms-1">0</span>
+                                <span className="badge bg-success ms-1">{finishedList.length}</span>
                             </li>
                         </NavLink>
                     </ul>
                 </div>
                 <div className="col-md-9">
                     {
-                        books.map(book => <Book book={book} key={book.id}></Book> )
+                        discoverList.map(book => <Book book={book} key={book.id}></Book> )
                     }
                 </div>
            </div>

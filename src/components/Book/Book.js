@@ -10,14 +10,14 @@ const Book = (props) => {
     return (
         <div className="card mb-3">
             <div className="row g-0">
-                <div className="col-md-4">
+                <div className="col-md-4 book-img">
                     <img src={coverImageUrl} className="img-fluid" alt="..." />
                 </div>
                 <div className="col-md-8">
                     <div className="card-body">
                         <h4 className="card-title">{title}</h4>
                         <h6>{author}</h6>
-                        <p className="card-text">{synopsis}</p>
+                        <p className="card-text">{synopsis.slice(0, 500)}...</p>
                     </div>
                 </div>
                <div>
