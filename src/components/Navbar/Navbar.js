@@ -1,8 +1,13 @@
 import React from 'react';
 import { Link } from "react-router-dom";
+import { handleSignIn } from '../../utilities/auth';
 import './Navbar.css';
 
 const Navbar = () => {
+    console.log(process.env.REACT_APP_KEY)
+    console.log(process.env.REACT_APP_ID)
+    console.log(process.env.REACT_APP_SENDER_ID)
+    
     return (
         <div className="mb-4">
             <nav className="navbar navbar-expand-lg navbar-light bg-light">
@@ -17,7 +22,7 @@ const Navbar = () => {
                                 <span className="nav-link active fw-bolder">Muhammad Shahnewaz</span>
                             </li>
                             <li className="nav-item">
-                               <button className="btn btn-outline-primary">Login</button>
+                               <button onClick={handleSignIn} className="btn btn-outline-primary">Login</button>
                             </li>
                         </ul>
                     </div>
