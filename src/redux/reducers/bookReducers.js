@@ -19,7 +19,8 @@ const bookReducer = (state = initialState, action) => {
         case 'REMOVE_FROM_READING_LIST': {
             const removeState = {
                 ...state,
-                readingList: [...state.readingList.filter(book => book.id !== action.payload)]
+                readingList: state.readingList.filter(book => book.id !== action.payload.id),
+                finishedList: [...state.finishedList, action.payload]
             }
             return removeState; 
         }

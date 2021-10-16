@@ -1,28 +1,24 @@
 import React from 'react';
 import { useSelector } from 'react-redux';
-import { NavLink } from "react-router-dom";
+import { NavLink} from "react-router-dom";
 import '../Books/Books.css';
-import { useDispatch } from 'react-redux';
-import { removeFromReadingList } from '../../redux/actions/bookActions';
 
-const Reading = () => {
+const Finished = () => {
     const { readingList, finishedList } = useSelector((state) => {
         return state.books;
     });
 
-    const dispatch = useDispatch();
-
     return (
         <div className="container">
             <div className="row g-0">
-                <div className="col-md-3 books">
+                 <div className="col-md-3 books">
                     <ul className="list-group">
                         <NavLink to="/" exact activeClassName="discover">
                             <li className="list-group-item">
                                 Discover
                             </li>
                         </NavLink>
-
+                    
                         <NavLink to="/reading-books" activeClassName="discover">
                             <li className="list-group-item">
                                 Reading List
@@ -39,7 +35,7 @@ const Reading = () => {
                 </div>
                 <div className="col-md-9">
                     {
-                        readingList?.length ? readingList.map((book) => {
+                         finishedList?.length ?  finishedList?.map((book) => {
                             return (
                                 <div key={book.id} className="card mb-3">
                                     <div className="row g-0">
@@ -53,25 +49,20 @@ const Reading = () => {
                                                 <p className="card-text">{book.synopsis.slice(0, 500)}...</p>
                                             </div>
                                         </div>
-                                        <div>
-                                            <span onClick={() => dispatch(removeFromReadingList(book))} className="add-discover position-absolute top-50 start-100 translate-middle px-2 bg-primary border border-light rounded-circle">
-                                                <span>-</span>
-                                            </span>
-                                        </div>
                                     </div>
                                 </div>
                             )
-                        })
-                            :
-                            <p className="p-4">
-                                Looks like you've finished all your books! Check them out in your finished books or discover .
-                            </p>
+                         }) 
+                        :
+                        <p className="p-4">
+                            Looks like you've finished all your books! Check them out in your finished books or discover.
+                        </p>
 
-                    }
+                     }
                 </div>
             </div>
         </div>
     );
 };
 
-export default Reading;
+export default Finished;
