@@ -41,6 +41,7 @@ export function PrivateRoute({ children, ...rest }) {
 }
 
 function useProvideAuth() {
+    const [modalIsOpen, setIsOpen] = useState(false);
     const [userInfo, setUserInfo] = useState("");
     const auth = getAuth(firebase);
 
@@ -55,8 +56,8 @@ function useProvideAuth() {
         return signInWithPopup(auth, provider)
             .then((result) => {
                 const user = formatUserInfo(result.user);
-                setUserInfo(user)
-                console.log(user)
+                setUserInfo(user);
+                setIsOpen(false);
             })
             .catch((error) => {
                 console.log(error)
@@ -100,6 +101,8 @@ function useProvideAuth() {
         handleGoogleSignIn,
         createEmailWithPassword,
         signInEmailPassword,
-        logOut
+        logOut,
+        setIsOpen,
+        modalIsOpen
     };
 }

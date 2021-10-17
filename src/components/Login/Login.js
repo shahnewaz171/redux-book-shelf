@@ -30,7 +30,7 @@ const Login = ({ closeModal }) => {
             createEmailWithPassword(user.email,  user.password)
             .then(res => {
                 if(res){
-                    setLogIn(!user);
+                    setLogIn(true);
                 }
             })
         }
@@ -38,6 +38,7 @@ const Login = ({ closeModal }) => {
             signInEmailPassword(user.email, user.password)
             .then(res => {
                 if(res){
+                    closeModal();
                     history.replace(from);
                 }
             })
@@ -46,7 +47,6 @@ const Login = ({ closeModal }) => {
             })
         }
     };
-
 
     return (
         <>

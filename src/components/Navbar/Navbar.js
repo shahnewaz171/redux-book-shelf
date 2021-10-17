@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React from 'react';
 import { Link } from "react-router-dom";
 import Modal from 'react-modal';
 import './Navbar.css';
@@ -6,8 +6,7 @@ import Login from '../Login/Login';
 import { useAuth } from '../../utilities/auth';
 
 const Navbar = () => {
-    const [modalIsOpen, setIsOpen] = useState(false);
-    const { userInfo, logOut } = useAuth();
+    const { userInfo, logOut, modalIsOpen, setIsOpen } = useAuth();
 
     const openModal = () => {
         if(userInfo){
