@@ -1,10 +1,17 @@
-import React from 'react';
-import { useSelector } from 'react-redux';
+import React, { useEffect } from 'react';
+import { useDispatch, useSelector } from 'react-redux';
 import { NavLink } from "react-router-dom";
+import { loadBooksAsync } from '../../redux/allSlice/bookSlice';
 import Book from '../Book/Book'
 import './Books.css';
 
 const Books = () => {
+    const dispatch = useDispatch();
+
+    useEffect(() => {
+        dispatch(loadBooksAsync());
+    }, [dispatch])
+
     const { discoverList, readingList, finishedList } = useSelector((state) => {
         return state.books;
     });
