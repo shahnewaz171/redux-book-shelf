@@ -1,21 +1,26 @@
 import React, { useState } from 'react';
 import { Link } from "react-router-dom";
-import { handleSignIn } from '../../utilities/auth';
 import Modal from 'react-modal';
 import './Navbar.css';
 import Login from '../Login/Login';
+import { useAuth } from '../../utilities/auth';
 
 const Navbar = () => {
     const [modalIsOpen, setIsOpen] = useState(false);
+    const { userInfo, logOut } = useAuth();
 
     const openModal = () => {
-        setIsOpen(true);
+        if(userInfo){
+            logOut();
+        }
+        else{
+            setIsOpen(true);
+        }
     }
 
     function closeModal() {
         setIsOpen(false);
     }
-
 
     return (
         <>
@@ -29,10 +34,10 @@ const Navbar = () => {
                         <div className="collapse navbar-collapse" id="navbarSupportedContent">
                             <ul className="navbar-nav ms-auto mb-2 mb-lg-0">
                                 <li className="nav-item">
-                                    <span className="nav-link active fw-bolder">Muhammad Shahnewaz</span>
+                                    <span className="nav-link active fw-bolder">{userInfo ? userInfo.name || userInfo.email : ""}</span>
                                 </li>
                                 <li className="nav-item r-out">
-                                    <button onClick={openModal} className="btn btn-primary btn-focus">Login</button>
+                                    <button onClick={openModal} className="btn btn-primary btn-focus">{userInfo ? "Logout" : "Login"}</button>
                                 </li>
                             </ul>
                         </div>
@@ -46,7 +51,7 @@ const Navbar = () => {
                 ariaHideApp={false}
                 contentLabel="Example Modal"
             >
-                <Login />
+                <Login closeModal={closeModal} />
             </Modal>
         </>
     );

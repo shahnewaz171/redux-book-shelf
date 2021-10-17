@@ -5,27 +5,30 @@ import Navbar from './components/Navbar/Navbar';
 import Books from './components/Books/Books';
 import Reading from './components/Reading/Reading';
 import Finished from './components/Finished/Finished';
+import { PrivateRoute, ProvideAuth } from './utilities/auth';
 
 function App() {
 
   return (
     <>
-      <Router>
-        <Switch>
-          <Route exact path="/">
-            <Navbar />
-            <Books />
-          </Route>
-          <Route path="/reading-books">
-            <Navbar />
-            <Reading />
-          </Route>
-          <Route path="/finished-books">
-            <Navbar />
-            <Finished />
-          </Route>
-        </Switch>
-      </Router>
+      <ProvideAuth>
+        <Router>
+          <Switch>
+            <Route exact path="/">
+              <Navbar />
+              <Books />
+            </Route>
+            <PrivateRoute path="/reading-books">
+              <Navbar />
+              <Reading />
+            </PrivateRoute>
+            <PrivateRoute path="/finished-books">
+              <Navbar />
+              <Finished />
+            </PrivateRoute>
+          </Switch>
+        </Router>
+      </ProvideAuth>
     </>
   );
 }
