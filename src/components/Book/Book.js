@@ -1,13 +1,10 @@
 import React from 'react';
 import { useDispatch } from 'react-redux';
-import { addToReadingList } from '../../redux/actions/bookActions';
+import { addBookToReadingList } from '../../redux/allSlice/bookSlice';
 
 const Book = (props) => {
     const {title, author, coverImageUrl, synopsis} = props.book;
-
     const dispatch = useDispatch();
-
-    
 
     return (
         <div className="card mb-3">
@@ -23,7 +20,7 @@ const Book = (props) => {
                     </div>
                 </div>
                <div>
-                <span onClick={() => dispatch(addToReadingList(props.book))} className="add-discover position-absolute top-50 start-100 translate-middle px-2 bg-primary border border-light rounded-circle">
+                <span onClick={() => dispatch(addBookToReadingList(props.book))} className="add-discover position-absolute top-50 start-100 translate-middle px-2 bg-primary border border-light rounded-circle">
                     <span>+</span>
                 </span>
                </div>

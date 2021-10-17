@@ -3,7 +3,7 @@ import { useSelector } from 'react-redux';
 import { NavLink } from "react-router-dom";
 import '../Books/Books.css';
 import { useDispatch } from 'react-redux';
-import { removeFromReadingList } from '../../redux/actions/bookActions';
+import { removeBookFromReadingList } from '../../redux/allSlice/bookSlice';
 
 const Reading = () => {
     const { readingList, finishedList } = useSelector((state) => {
@@ -54,7 +54,7 @@ const Reading = () => {
                                             </div>
                                         </div>
                                         <div>
-                                            <span onClick={() => dispatch(removeFromReadingList(book))} className="add-discover position-absolute top-50 start-100 translate-middle px-2 bg-primary border border-light rounded-circle">
+                                            <span onClick={() => dispatch(removeBookFromReadingList(book))} className="add-discover position-absolute top-50 start-100 translate-middle px-2 bg-primary border border-light rounded-circle">
                                                 <span>-</span>
                                             </span>
                                         </div>

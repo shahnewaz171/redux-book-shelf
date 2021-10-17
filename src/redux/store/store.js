@@ -1,10 +1,8 @@
-import { combineReducers } from "redux";
-import { createStore } from "redux";
-import { composeWithDevTools } from "redux-devtools-extension";
-import bookReducer from "../reducers/bookReducers";
+import { configureStore } from "@reduxjs/toolkit";
+import bookSlice from "../allSlice/bookSlice";
 
-const combineReducer = combineReducers({
-    books: bookReducer
+export const store = configureStore({
+    reducer: {
+        books: bookSlice
+    }
 })
-
-export const store = createStore(combineReducer, composeWithDevTools());
